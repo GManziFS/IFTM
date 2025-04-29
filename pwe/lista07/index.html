@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+</head>
+<body>
+    <form>
+    <H1>Cadastro de Clientes</H1>
+    <p style="color: red;">Todos os campos são de preenchimento obrigatorio</p>
+
+    <fieldset>
+        <legend><h2>Dados Pessoais</h2></legend>
+        <label for="nome">Nome:</label><br>
+        <input id="nome" type="text" placeholder="Nome completo" required><br><br>
+        <label for="idade">Data de nascimento:</label><br>
+        <input id="idade" type="date"><br><br required>
+        <label for="sexo">Sexo:</label><br>
+        <input type="radio" id="feminino" value="Feminino" required>
+        <label for="feminino">Feminino</label>
+        <input type="radio" id="masculino" value="Masculino">
+        <label for="masculino">Masculino</label> <br><br>
+    </fieldset>
+
+    <fieldset>
+        <legend><h2>Informações de Contato</h2></legend>
+        <label for="email">Email:</label><br>
+        <input id="email" type="email" placeholder="seuemail@email.com" required><br><br>
+        <label for="Telefone">Telefone:</label><br>
+        <input id="Telefone" type="tel" placeholder="Seu numero aqui" max="999999999" required><br><br>
+        <label for="site">Site pessoal:</label><br>
+        <input id="site" type="text" placeholder="www.seusite.com" required><br><br>
+    </fieldset>
+
+    <fieldset>
+        <legend><h2>Localização</h2></legend>
+        <label for="endereço">Endereço:</label><br>
+        <input id="endereço" type="text" placeholder="Seu endereço" required><br><br>
+        <label for="numero">Numero:</label><br>
+        <input id="numero" type="number" placeholder="Numero da residencia" min="1" maxlength="9999" required><br><br>
+        <label for="cidade">Cidade:</label><br>
+        <input id="cidade" type="text" placeholder="Endereço" required><br>
+    </fieldset>    
+    
+        <input type="submit" value="Submit">
+        <input type="reset" value="Reset">
+    </form>
+</body>
+</html>
