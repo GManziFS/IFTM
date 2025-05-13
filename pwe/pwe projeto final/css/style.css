@@ -1,0 +1,13 @@
+nav{
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+    background-color: rgb(153, 0, 255);
+}
+.naviten{
+    color: rgb(255, 255, 255);
+    background-color: rgb(255, 255, 255);
+    text-decoration: none;
+    padding: 10px;
+    border: 1px solid #000000;
+}
