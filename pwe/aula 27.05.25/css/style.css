@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Oswald:wght@200..700&display=swap');
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+h1, h2, h3, h4{
+    font-family: "Oswald", sans-serif;
+}
+
+body{
+    font-family: "Inter", sans-serif;
+    background-color: black;
+}
+
+section{
+    width: 1200px;
+    background-color: white;
+    margin: auto;
+    padding: 30px;
+}
+
+header p, header h1{
+    padding: 15px;
+    text-align: right;
+}
+
+header h1{
+    background-color: black;
+    color: white;
+    font-size: 50px;
+}
+
+header p{
+    color: white;
+    background-color: gray;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+header nav ul{
+    background-color: rgb(104, 104, 195);
+    color: rgb(255, 255, 255);
+    text-align: center;
+    list-style: none;
+}
+
+header nav ul li{
+    display: inline-block;  
+}
+
+header nav ul li a:link, 
+header nav ul li a:visited{
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    display: inline-block;
+    padding: 40px 10px 10px 10px;
+    font-weight: bolder;
+    background-image: url(../imagens/logos_gray_transparent_70x70.png);
+    background-repeat: no-repeat;
+    background-position: center -10px;
+    width: 150px;
+}
+
+header nav ul li a:hover{
+    background-image: url(../imagens/logos_resized_70x70.png);
+    color: rgb(255, 255, 0);
+}
+
+section h2{
+    transition: all 0.5s;
+}
+
+section h2:hover{
+    letter-spacing: 5px;
+}
