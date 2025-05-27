@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Almendra+Display&display=swap');
+
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+header {
+  font-family: "Almendra Display", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+header nav ul {
+    list-style: none;
+    background-color: black;
+    padding: 0px;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+header nav ul li{
+    display: inline-block;
+}
+
+header nav a:link, header nav a:visited{
+    color: white;
+    text-decoration: none;
+    font-size: 12px;
+    display: inline-block;
+    padding: 30px;
+}
+
+header nav a:hover{
+    color: purple;
+    background-color: white;
+}
