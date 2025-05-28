@@ -1,13 +1,81 @@
-nav{
-    display: flex;
-    justify-content: center;
-    gap: 100px;
-    background-color: rgb(153, 0, 255);
+@import url('https://fonts.googleapis.com/css2?family=Covered+By+Your+Grace&display=swap');
+
+*{
+    box-sizing: border-box;
+    padding: 0px;
+    margin: 0px;
 }
-.naviten{
-    color: rgb(255, 255, 255);
-    background-color: rgb(255, 255, 255);
+
+header h1{
+    font-family: "Covered By Your Grace", cursive;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 50px;
+    background-color: purple;
+    padding: 10px 5px 5px 5px;
+}
+
+header h1 a:link, 
+header a:visited{
     text-decoration: none;
-    padding: 10px;
-    border: 1px solid #000000;
+    color: black;
+    display: flex;
+    align-items: center;
+}
+
+header h1 .M,
+header h1 .N,
+header h1 .Z {
+    transition: all 0.3s ease; 
+}
+
+header h1:hover .M {
+    color: blue;
+}
+
+header h1:hover .N {
+    color: red;
+}
+
+header h1:hover .Z {
+    color: cornflowerblue;
+}
+
+header h1 .logo{
+    opacity: 0;
+    transform: translateX(-20px);
+    visibility: hidden;
+}
+
+header h1:hover .logo {
+    display: inline-block; 
+    width: 50px;  
+    height: 50px;
+    background-image: url('../imagens/favicon_io/d20_by_casper_corfield_dclcb4s.gif'); 
+    background-size: contain; 
+    background-repeat: no-repeat;
+    background-position: center; 
+    margin-left: 15px; 
+    opacity: 1;
+    transform: translateX(0);
+    visibility: visible;
+    transition: opacity 0.7s ease, transform 0.7s ease, visibility 0.7s ease;
+}
+
+header nav ul{
+    background-color: rgba(110, 0, 138, 0.781);
+    color: white;
+    text-align: center;
+    list-style: none;
+}
+
+header nav ul li{
+    display: inline-block; 
+    padding: 40px 50px 10px 50px;
+}
+
+header nav ul li a:link, 
+header nav ul li a:visited{
+    text-decoration: none;
+    color: white;
 }
