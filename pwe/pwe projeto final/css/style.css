@@ -37,7 +37,7 @@ header h1:hover .M {
 }
 
 header h1:hover .N {
-    color: #051326;
+    color: #280096;
 }
 
 header h1:hover .Z {
@@ -45,24 +45,25 @@ header h1:hover .Z {
 }
 
 header h1 .logo{
-    opacity: 0;
-    transform: translateX(-20px);
-    visibility: hidden;
-}
-
-header h1:hover .logo {
     display: inline-block; 
     width: 50px;  
     height: 50px;
-    background-image: url('../imagens/favicon_io/d20_by_casper_corfield_dclcb4s.gif'); 
+    background-image: url('../imagens/menu/d20_by_casper_corfield_dclcb4s.gif'); 
     background-size: contain; 
     background-repeat: no-repeat;
     background-position: center; 
     margin-left: 15px; 
+    opacity: 0;
+    transform: translateX(-20px);
+    visibility: hidden;  
+    transition: opacity 0.7s ease, transform 0.7s ease, visibility 0s linear 0.7s;
+}
+
+header h1:hover .logo {
     opacity: 1;
     transform: translateX(0);
     visibility: visible;
-    transition: opacity 0.7s ease, transform 0.7s ease, visibility 0.7s ease;
+    transition: opacity 0.7s ease, transform 0.7s ease, visibility 0s linear 0s;
 }
 
 header nav ul{
@@ -89,7 +90,7 @@ header nav ul li a:visited{
     display: inline-block;
     width: 50px;
     height: 50px;
-    background-image: url(../imagens/favicon_io/Dungeons\ And\ Dragons\ 3D\ Sticker.gif);
+    background-image: url(../imagens/menu/Dungeons_And_Dragons_3D_Sticker.gif);
     background-repeat: no-repeat;
     background-position: 15px -25px;
     background-size: cover;
