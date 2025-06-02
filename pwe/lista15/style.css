@@ -47,14 +47,14 @@ header nav a:link, header nav a:visited {
     text-decoration: none;
     color: white;
     font-weight: bold;
-    background-image: url(Imagens/logos_gray.png);
+    background-image: url(imagens/logos_gray.png);
     background-repeat:no-repeat;
     background-position: center -15px;
 }
 
 header nav a:hover {
     color: yellow;
-    background-image: url(Imagens/logos_.png);
+    background-image: url(imagens/logos_.png);
 }
 /* Fim: Menu */
 
