@@ -67,7 +67,7 @@ header h1:hover .logo {
 }
 
 header nav ul{
-    background-color: #051326;
+    background-color: #000524;
     color: white;
     text-align: center;
     list-style: none;
@@ -84,8 +84,6 @@ header nav ul li a:visited{
     padding: 50px 50px 10px 50px;
 }
 
-
-
 .dice{
     display: inline-block;
     width: 50px;
@@ -94,4 +92,16 @@ header nav ul li a:visited{
     background-repeat: no-repeat;
     background-position: 15px -25px;
     background-size: cover;
+}
+
+body{
+    background-color: #020f59;
+}
+
+section{
+    width: 1000px;
+    background-color: #1763a68c;
+    margin: auto;
+    padding: 30px;
+    border-radius: 1%;
 }
