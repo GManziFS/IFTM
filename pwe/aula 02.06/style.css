@@ -1,0 +1,54 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: darkblue;
+}
+
+.container{
+    display: flex;
+    flex-direction: row;
+}
+
+.container div{
+    width: 100%;
+    border: 1px solid black;
+    padding: 10px;
+    margin: 5px;
+}
+
+.secao{
+    background-color: darkcyan;
+    border: 1px solid black;
+    width: 1200px;
+    margin: auto;
+    
+}
+
+.secao p{
+    text-align: justify;
+    line-height: 1.5em;
+}
+
+.secao h2{
+    margin-bottom: 20px;
+}
+
+.agendaReitor2 > div div:nth-of-type(1){
+    width: 20%;
+}
+
+.agendaReitor3 > div div:nth-of-type(3){
+    width: 50%;
+}
+
+.agendaReitor3 > div div:nth-of-type(2){
+    width: 25%;
+}
+
+.agendaReitor3 > div div:nth-of-type(1){
+    width: 25%;
+}
