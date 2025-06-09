@@ -1,0 +1,50 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+header{
+    background-color: darkblue;
+    width: 1200px;
+    margin: auto;
+}
+
+header h1{
+    text-align: center;
+    color: white;
+    padding: 15px;
+}
+
+body{
+    background-color: black;
+    font-family: Arial;
+}
+
+section{
+    width: 1200px;
+    background: white;
+    margin: auto;
+}
+
+.containerc{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.containerr{
+    display: flex;
+    flex-direction: row;
+    text-align: justify;
+    padding-right: 40px;
+}
+.containerr > div h2{
+    color: rgb(223, 82, 39);
+    margin-top: 40px;
+}
+
+.containerr > div h3{
+    padding: 15px 0px 30px 0px;
+}
