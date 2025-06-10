@@ -1,0 +1,48 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: arial;
+}
+
+.containerHeader{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.containerHeader > div h2 {
+    color: red;
+    padding: 25px;
+}
+
+.containerHeader hr{
+    width: 200px;
+    border: 1.5px solid red;
+    margin: 10px;
+    border-radius: 5px;
+    margin-top: 15px;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    text-align: center;
+}
+
+.container > div h1{
+    margin: 60px;
+}
+
+.container > div button{
+    color: white;
+    margin: 40px;
+    background-color: red;
+    padding: 10px 20px 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+}
