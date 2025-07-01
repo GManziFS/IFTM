@@ -5,6 +5,30 @@
     font-family: Arial;
 }
 
+section{
+    margin-top: 35px;
+}
+
+section > div{
+    margin: auto;
+    width: 350px;
+}
+
+section:nth-child(odd){
+    margin: auto;
+    background-color: rgb(25, 23, 23);
+    color: white;
+}
+
+footer{
+    background-color: black;
+    padding: 25px;
+}
+
+footer > p {
+    color: white;
+}
+
 .contHeader{
     display: flex;
     flex-direction: column;
@@ -32,13 +56,10 @@
 
 .apresentacao{
     margin: auto;
-    background-color: rgb(25, 23, 23);
     padding-top: 10px;
 }
 
 .contMain{
-    margin: auto;
-    width: 350px;
     text-align: center;
 }
 
@@ -58,12 +79,60 @@
     background-color: rgb(42, 42, 255);
     color: white;
     width: 150px;
-    height: 40px;
-    margin-top: 35px;
+    height: 40px; 
 }
 
 .butao:hover{
     background-color: rgb(24, 24, 251);
+}
+
+.contIcon{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.contIcon > div > h2{
+    color: red;
+}
+
+.contIcon > div > p{
+    color: black;
+    text-align: justify;
+    font-size: 15px;
+    margin-bottom: 25px;
+    line-height: 1.5em;
+}
+
+.contApp{
+    display: flex;
+    flex-direction: column;
+    padding: 35px;
+}
+
+.contApp > h2{
+    text-align: center;
+}
+
+.contApp > p{
+    text-align: justify;
+}
+
+.contImg{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.contImg > div > p{
+    color: black;
+    text-align: justify;
+}
+
+.contImg > div > figure figcaption{
+    font-size: 22px;
+    font-weight: bold;
+    padding: 10px 0px;
 }
 
 @media screen and (min-width:768px) {
@@ -85,12 +154,31 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        width: 1200px;
-        margin: auto;
     }
 
     .butao{
         width: 200px;
         height: 60px;
+    }
+
+    .contIcon{
+        flex-direction: row;
+    }
+
+    section > div{
+        width: 1200px;
+    }
+
+    .contImg{
+        flex-direction: row;
+        text-align: center;
+    }
+
+    .contImg > div{
+        padding: 20px;
+    } 
+
+    .contImg > div > figure figcaption{
+        font-size: 30px;
     }
 }
