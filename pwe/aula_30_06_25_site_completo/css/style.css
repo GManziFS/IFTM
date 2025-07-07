@@ -22,7 +22,7 @@ section:nth-child(odd){
 
 footer{
     background-color: black;
-    padding: 25px;
+    padding: 10px;
 }
 
 footer > p {
@@ -135,6 +135,20 @@ footer > p {
     padding: 10px 0px;
 }
 
+.contFim{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.contFim > div:nth-child(1){
+    border-bottom: 2px solid rgb(24, 24, 251);
+}
+
+.contFim > div:nth-child(2) > img{
+    margin-bottom: 20px;
+}
+
 @media screen and (min-width:768px) {
     .contHeader{
         flex-direction: row;
@@ -180,5 +194,15 @@ footer > p {
 
     .contImg > div > figure figcaption{
         font-size: 30px;
+    }
+
+    .contFim{
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .contFim > div:nth-child(1){
+    border-bottom: 0;
+    border-right: 2px solid rgb(24, 24, 251);
     }
 }
