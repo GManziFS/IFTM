@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Menu com Submenu</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+    }
+
+    nav {
+      background-color: #333;
+    }
+
+    ul.menu {
+      list-style: none;
+      display: flex;
+    }
+
+    ul.menu > li {
+      position: relative;
+    }
+
+    ul.menu > li > a {
+      display: block;
+      padding: 15px 20px;
+      color: white;
+      text-decoration: none;
+    }
+
+    ul.menu > li:hover {
+      background-color: #444;
+    }
+
+    ul.submenu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: #444;
+      list-style: none;
+      min-width: 180px;
+    }
+
+    ul.submenu li a {
+      display: block;
+      padding: 12px 16px;
+      color: white;
+      text-decoration: none;
+    }
+
+    ul.submenu li a:hover {
+      background-color: #555;
+    }
+
+    ul.menu > li:hover > ul.submenu {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <ul class="menu">
+      <li><a href="#">Início</a></li>
+      <li>
+        <a href="#">Serviços</a>
+        <ul class="submenu">
+          <li><a href="#">Criação de Sites</a></li>
+          <li><a href="#">Design</a></li>
+          <li><a href="#">Marketing</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Portfólio</a></li>
+      <li><a href="#">Contato</a></li>
+    </ul>
