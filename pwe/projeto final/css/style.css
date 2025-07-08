@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Covered+By+Your+Grace&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #11111f;
+}
+
+.cabecalho {
+    font-family: "Covered By Your Grace", cursive;
+    text-decoration: none;
+    letter-spacing: -4px;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+}
+
+.cabecalho a {
+    font-size: 50px;
+    text-decoration: none;
+    padding: 20px 40px;
+    display: inline-block;
+    text-align: left;      
+}
+
+.cabecalho img{
+    width: 80px;
+    margin: -20px;
+}
+
+nav{
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    background-color: #0d0d0d;
+}
+
+nav ul {
+    list-style: none;
+    font-size: 25px;
+    width: 100%;
+}
+
+nav ul li a{
+    text-decoration: none;
+    color: #fff;
+    padding: 10px 20px;
+    display: block;
+}
+
+nav li{
+    position: relative;
+    border-bottom: 1px solid rgba(39, 38, 38, 0.76);
+    padding: 15px;
+}
+
+.sub{
+    display: none;
+    position: absolute;
+    top: 10px;
+    left: 0;
+    background-color: #444;
+    flex-direction: column;
+}
+
+.temSub:hover .sub{
+    display: block;
+    position: relative;
+}
+
+.msub input{
+    display: none;
+}
+
+.msub input:checked + .sub{
+    display: block;
+}
+
+nav label{
+    color: white;
+}
+
+@media screen and (min-width: 768px) {
+    .cabecalho{
+        align-items: start;   
+    }
+
+    nav > ul{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        width: 100%;
+    }
+    
+    nav > ul > li{
+        min-width: 200px;
+    }
+
+    .sub{
+        min-width: 200px; 
+        z-index: 10; 
+    }
+
+    .temSub:hover .sub{
+        display: block;
+        position: absolute;
+        top: 100%;
+    }
+}
