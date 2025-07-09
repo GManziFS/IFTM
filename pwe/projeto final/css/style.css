@@ -131,6 +131,33 @@ nav label{
     outline: 2px solid #ff3366;
 }
 
+.diceEsq {
+    position: absolute;
+    top: 25%;
+    left: -20px;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.sub li:hover .diceEsq {
+    transform: translateX(30px);
+    opacity: 1;
+}
+
+.diceDir {
+    position: absolute;
+    top: 25%;
+    right: -20px;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.sub li:hover .diceDir {
+    transform: translateX(-30px);
+    opacity: 1;
+}
+
+
 .pergEsq {
     position: absolute;
     top: 25%;
