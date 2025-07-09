@@ -104,46 +104,127 @@ nav label{
 }
 
 .sub li{
-        position: relative;
-    }
+    position: relative;
+}
 
-    .sub li > img{
-        width: 40px;
-    }
+.sub li > img{
+    width: 40px;
+}
 
-    .sub li > img:nth-child(1){
-        position: absolute;
-        top: -19px;
-        left: 6px;
-        transform: rotate(45deg);
-        opacity: 0;
-        transition: all 0.3s ease;
-    }
+.menuRPG:hover {
+    box-shadow: 0 0 10px #b979f580;
+    outline: 2px solid #b979f5;
+}
 
-    .sub li:hover > img:nth-child(1){
-        position: absolute;
-        top: -4px;
-        left: 0;
-        transform: rotate(78deg);
-        opacity: 1;
-    }
+.menuMestre:hover {
+    outline: 2px solid #c9a139;
+    box-shadow: 0 0 15px #c9a13988;
+}
 
-    .sub li > img:nth-child(3) {
-        position: absolute;
-        bottom: -20px;
-        right: 4px;
-        transform: rotate(-135deg);
-        opacity: 0;
-        transition: all 0.3s ease;
-    }
+.menuSistemas:hover {
+    box-shadow: 0 0 10px #5c7aff80;
+    outline: 2px solid #5c7aff;
+}
 
-    .sub li:hover > img:nth-child(3) {
-        position: absolute;
-        bottom: -4px;
-        right: 0;
-        transform: rotate(-105deg);
-        opacity: 1;
-    }
+.menuSeries:hover {
+    box-shadow: 0 0 10px #ff336680;
+    outline: 2px solid #ff3366;
+}
+
+.pergEsq {
+    position: absolute;
+    top: 25%;
+    left: -25px;
+    width: 30px;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.sub li:hover .pergEsq {
+    transform: translateX(30px);
+    opacity: 1;
+}
+
+.pergDir {
+    position: absolute;
+    top: 25%;
+    right: -25px;
+    width: 30px;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.sub li:hover .pergDir {
+    transform: translateX(-30px);
+    opacity: 1;
+}
+
+.espadaSup {
+    position: absolute;
+    top: -19px;
+    left: 6px;
+    transform: rotate(45deg);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.sub li:hover .espadaSup {
+    top: -4px;
+    left: 0;
+    transform: rotate(78deg);
+    opacity: 1;
+}
+
+.espadaInf {
+    position: absolute;
+    bottom: -20px;
+    right: 4px;
+    transform: rotate(-135deg);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.sub li:hover .espadaInf {
+    bottom: -6px;
+    right: 0;
+    transform: rotate(-105deg);
+    opacity: 1;
+}
+
+.holoEsq {
+    position: absolute;
+    width: 30px;
+    top: -5px;
+    left: 0;
+    transform: translateX(-15px) rotate(90deg);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.sub li:hover .holoEsq {
+    top: -5px;
+    left: 0;
+    transform: translate(0px) rotate(90deg);
+    opacity: 1;
+}
+
+.holoDir {
+    position: absolute;
+    width: 30px;
+    top: -5px;
+    right: 0;
+    transform: translateX(15px) rotate(-90deg) scaleX(-1);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.sub li:hover .holoDir {
+    top: -5px;
+    right: 0;
+    transform: translate(0px) rotate(-90deg) scaleX(-1);
+    opacity: 1;
+}
+
 
 @media screen and (min-width: 768px) {
     .cabecalho{
