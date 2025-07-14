@@ -11,6 +11,7 @@ public class App {
         	    
 	    System.out.println("Bem vindo ao seu backlog de jogos!");
 	    System.out.println("Para começarmos:");
+
 		menu(s, contador, jogos, nota);
 	}
 
@@ -41,6 +42,12 @@ public class App {
         switch(opcao){
             case 1:
                 cadastro(s, contador, jogos, nota);
+
+			case 2:
+				
+
+			case 5:
+				break;
         }
     }
     
