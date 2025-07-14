@@ -126,11 +126,6 @@ nav label{
     outline: 2px solid #5c7aff;
 }
 
-.menuSeries:hover {
-    box-shadow: 0 0 10px #ff336680;
-    outline: 2px solid #ff3366;
-}
-
 .diceEsq {
     position: absolute;
     top: 25%;
