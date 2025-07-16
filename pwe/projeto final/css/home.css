@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Unicase:wght@300;400;500;600;700&family=MedievalSharp&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+section {
+    margin: auto;
+    width: 1200px;
+    background-color: #333333;
+}
+
+.geral {
+    margin: 5px;
+    padding: 20px;
+    color: white;
+}
+
+.bemVindo {
+    text-align: center;
+}
+
+.bemVindo h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    font-family: "MedievalSharp", cursive;
+    color: #FFD700; 
+}
+
+.bemVindo p {
+    font-size: 1.2em;
+    line-height: 1.5;
+    font-family: "MedievalSharp", cursive;
+}
+
+.inicio h2{
+    font-family: "MedievalSharp", cursive;
+    padding: 10px;
+}
+
+.inicio p {
+    font-size: 1.2em;
+    line-height: 1.5;
+    font-family: "Cormorant Unicase", serif;
+}
