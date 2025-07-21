@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Covered+By+Your+Grace&display=swap');
-/*  */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Unicase:wght@300;400;500;600;700&family=MedievalSharp&display=swap');
+
 *{
     margin: 0;
     padding: 0;
@@ -11,7 +11,7 @@ body{
 }
 
 .cabecalho {
-    font-family: "Covered By Your Grace", cursive;
+    font-family: "MedievalSharp", cursive;
     text-decoration: none;
     letter-spacing: -4px;
     display: flex;
@@ -105,6 +105,18 @@ nav label{
 
 .sub li{
     position: relative;
+}
+
+.menuRPG{
+    font-family: "MedievalSharp", cursive;
+}
+
+.menuMestre{
+    font-family: "MedievalSharp", cursive;
+}
+
+.menuSistemas{
+    font-family: "MedievalSharp", cursive;
 }
 
 .menuRPG:hover {
