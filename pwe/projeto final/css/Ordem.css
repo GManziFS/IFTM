@@ -1,0 +1,14 @@
+.logoOrdem {
+    width: 100%;
+}
+
+.geral {
+    text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+    .logoOrdem {
+        width: 35%;
+    }
+    
+}

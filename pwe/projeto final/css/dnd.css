@@ -1,0 +1,15 @@
+.dnd {
+    width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+    .geral {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .dnd {
+        width: 300px;
+    }
+    
+}
