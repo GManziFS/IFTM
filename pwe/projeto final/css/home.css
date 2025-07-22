@@ -1,40 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Unicase:wght@300;400;500;600;700&family=MedievalSharp&display=swap');
 
-section {
-    width: 350px;
-    margin: auto;
-    background-color: #333333;
-}
-
-.colunas {
-    display: flex;
-    flex-direction: column;
-}
-
-.colunas > div {
-    width: 100%;
-    padding: 10px;
-}
-
-.geral {
-    margin: 10px;
-    padding: 10px;
-    color: white;
-}
-
-body h1, h2 {
-    font-family: "MedievalSharp", cursive;
-    text-align: center;
-    font-size: 1.5em;
-    padding: 8px;
-}
-
-body p{
-    font-family: "Cormorant Unicase", serif;
-    font-size: 1.2em;
-    line-height: 1.2em;
-}
-
 .bemVindo {
     text-align: center;
     padding: 20px;
@@ -49,10 +14,6 @@ body p{
     align-items: center;
 }
 
-.recursos > div > p{
-    margin: 20px;
-}
-
 .recursos > div > img{
     width: 300px;
     height: auto;
@@ -60,26 +21,6 @@ body p{
 }
 
 @media screen and (min-width: 767px) {
-    section {
-        margin: auto;
-        width: 1200px;
-        background-color: #333333;
-    }
-
-    .colunas{
-        flex-direction: row;
-    }
-
-    .colunas > div{
-        width: 100%;
-        padding: 20px;
-    }
-
-    .geral {
-        margin: 5px;
-        padding: 20px;
-    }
-
     .bemVindo h1 {
         font-size: 2.5em;
     }

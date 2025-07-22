@@ -5,6 +5,7 @@ public class App {
 		Scanner s = new Scanner(System.in);
 	    int contador;
 	    
+		
 	    contador = 0;
 	    String jogos[][] = new String[100][3];
 	    int nota[] = new int[100];
@@ -18,14 +19,17 @@ public class App {
     public static void menu(Scanner s, int contador, String jogos[][], int nota[]) {
         int opcao;
         
-	    System.out.println("⁞________________________________________⁞");
-	    System.out.println("⁞Selecione uma opção:                    ⁞");
-	    System.out.println("⁞[1] incluir jogo/avaliação              ⁞");
-	    System.out.println("⁞[2] consultar lista de jogos            ⁞");
-	    System.out.println("⁞[3] consultar detalhes da avaliação     ⁞");
-	    System.out.println("⁞[4] Excluir um jogo/avaliação           ⁞");
-	    System.out.println("⁞[5] sair                                ⁞");
-	    System.out.println("⁞________________________________________⁞");
+		System.out.println("""
+			⁞________________________________________⁞
+			⁞Selecione uma opção:                    ⁞
+	    	⁞[1] incluir jogo/avaliação              ⁞
+	    	⁞[2] consultar lista de jogos            ⁞
+	    	⁞[3] consultar detalhes da avaliação     ⁞
+	    	⁞[4] Excluir um jogo/avaliação           ⁞
+	    	⁞[5] sair                                ⁞
+	    	⁞________________________________________⁞
+			""";);
+		
 	    
 	    opcao = s.nextInt();
 		s.nextLine();

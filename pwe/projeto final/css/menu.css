@@ -10,6 +10,49 @@ body{
     background-color: #11111f;
 }
 
+body h1, h2 {
+    font-family: "MedievalSharp", cursive;
+    text-align: center;
+    padding: 8px;
+}
+
+body h1 {
+    font-size: 2.5em;
+}
+
+body h2 {
+    font-size: 1.6em;
+}
+
+body p{
+    font-family: "Cormorant Unicase", serif;
+    font-size: 1.2em;
+    line-height: 1.2em;
+    padding: 5px;
+}
+
+section {
+    width: 350px;
+    margin: auto;
+    background-color: #333333;
+}
+
+.colunas {
+    display: flex;
+    flex-direction: column;
+}
+
+.colunas > div {
+    width: 100%;
+    padding: 10px;
+}
+
+.geral {
+    margin: 10px;
+    padding: 10px;
+    color: white;
+}
+
 .cabecalho {
     font-family: "MedievalSharp", cursive;
     text-decoration: none;
@@ -161,7 +204,6 @@ nav label{
     transform: translateX(-30px);
     opacity: 1;
 }
-
 
 .pergEsq {
     position: absolute;
@@ -364,7 +406,7 @@ nav label{
 
 .olhoSolo2 {
     position: absolute;
-    width: 50px;
+    width: 30px;
     bottom: 0;
     right: 0;
     opacity: 0;
@@ -552,6 +594,10 @@ nav label{
     box-shadow: 2px 2px 20px #fbff00;
 }
 
+.luz{
+    transition: all 0.3s;
+}
+
 footer {
     background-color: #0d0d0d;
     color: #fff;
@@ -561,6 +607,26 @@ footer {
 }
 
 @media screen and (min-width: 768px) {
+    section {
+        margin: auto;
+        width: 1200px;
+        background-color: #333333;
+    }
+
+    .colunas{
+        flex-direction: row;
+    }
+
+    .colunas > div{
+        width: 100%;
+        padding: 20px;
+    }
+
+    .geral {
+        margin: 5px;
+        padding: 20px;
+    }
+
     .cabecalho{
         align-items: start;   
     }
