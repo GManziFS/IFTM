@@ -1,5 +1,14 @@
 .imgTopo {
+    width: 100%;
     display: flex;
     margin: auto;
     border-radius: 8px;
+}
+
+@media screen and (min-width: 768px) {
+    .imgTopo {
+        width: 70%;
+        height: auto;
+    }
+    
 }
