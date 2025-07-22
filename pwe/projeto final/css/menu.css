@@ -10,7 +10,7 @@ body{
     background-color: #11111f;
 }
 
-body h1, h2 {
+body h1, h2, h3 {
     font-family: "MedievalSharp", cursive;
     text-align: center;
     padding: 8px;
@@ -22,6 +22,10 @@ body h1 {
 
 body h2 {
     font-size: 1.6em;
+}
+
+body h3 {
+    font-size: 1.4em;
 }
 
 body p{
