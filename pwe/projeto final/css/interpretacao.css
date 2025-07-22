@@ -1,4 +1,14 @@
 .instr{
     text-align: center;
-    margin-bottom: 20px;
+}
+
+.instr img {
+    width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+    .instr img{
+        width: 70%;
+        margin: auto;
+    }
 }
