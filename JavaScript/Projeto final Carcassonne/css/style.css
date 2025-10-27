@@ -1,0 +1,19 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: rgb(219, 219, 134);
+}
+
+.carta{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#cardVirado{
+    width: 8%;
+}
+
+.monte {
+    border: 2px solid black;
+}

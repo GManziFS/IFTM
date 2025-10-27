@@ -2,6 +2,7 @@ class Tile{
     constructor(img, conteudo = {}){
         this.img = img
         this.conteudo = conteudo
+        this.element = null
     }    
 }
 
@@ -552,6 +553,34 @@ const roadJunctionSmall3 = new Tile(
     {topo: 2, direita: 2, baixo: 2, esquerda: 1, centro: 1}
 )
 
+const castleCenterEntry = [castleCenterEntry0, castleCenterEntry1, castleCenterEntry2];
+const castleCenterSide = [castleCenterSide0, castleCenterSide1, castleCenterSide2, castleCenterSide3];
+const castleCenterSides = [castleCenterSides0, castleCenterSides1, castleCenterSides2, castleCenterSides3];
+const castleEdge = [castleEdge0, castleEdge1, castleEdge2, castleEdge3];
+const castleEdgeRoad = [castleEdgeRoad0, castleEdgeRoad1, castleEdgeRoad2, castleEdgeRoad3];
+const castleMini = [castleMini0, castleMini1, castleMini2, castleMini3];
+const castleSidesEdge = [castleSidesEdge0, castleSidesEdge1, castleSidesEdge2, castleSidesEdge3];
+const castleSidesEdgeRoad = [castleSidesEdgeRoad0, castleSidesEdgeRoad1, castleSidesEdgeRoad2, castleSidesEdgeRoad3];
+const castleTube = [castleTube0, castleTube1, castleTube2, castleTube3];
+const castleTubeEntry = [castleTubeEntry0, castleTubeEntry1, castleTubeEntry2, castleTubeEntry3];
+const castleWall = [castleWall0, castleWall1, castleWall2, castleWall3];
+const castleWallCurveLeft = [castleWallCurveLeft0, castleWallCurveLeft1, castleWallCurveLeft2, castleWallCurveLeft3];
+const castleWallCurveRight = [castleWallCurveRight0, castleWallCurveRight1, castleWallCurveRight2, castleWallCurveRight3];
+const castleWallEntry = [castleWallEntry0, castleWallEntry1, castleWallEntry2, castleWallEntry3];
+const castleWallEntryLeft = [castleWallEntryLeft0, castleWallEntryLeft1, castleWallEntryLeft2, castleWallEntryLeft3];
+const castleWallEntryRight = [castleWallEntryRight0, castleWallEntryRight1, castleWallEntryRight2, castleWallEntryRight3];
+const castleWallJunction = [castleWallJunction0, castleWallJunction1, castleWallJunction2, castleWallJunction3];
+const castleWallRoad = [castleWallRoad0, castleWallRoad1, castleWallRoad2, castleWallRoad3];
+const monasteryRoad = [monasteryRoad0, monasteryRoad1, monasteryRoad2, monasteryRoad3];
+const road = [road0, road1, road2, road3];
+const roadCrossSmall = [roadCrossSmall0, roadCrossSmall1, roadCrossSmall2, roadCrossSmall3];
+const roadCurve = [roadCurve0, roadCurve1, roadCurve2, roadCurve3];
+const roadEnd = [roadEnd0, roadEnd1, roadEnd2, roadEnd3];
+const roadJunctionSmall = [roadJunctionSmall0, roadJunctionSmall1, roadJunctionSmall2, roadJunctionSmall3];
+const castleSides = [castleSides0, castleSides1];
+const castleSidesRoad = [castleSidesRoad0, castleSidesRoad1];
+const castleTubeEntries = [castleTubeEntries0, castleTubeEntries1];
+
 const allTiles = {
     castleCenter0, castleCenterEntry0, castleCenterEntry1, castleCenterEntry2,
     castleCenterSide0, castleCenterSide1, castleCenterSide2, castleCenterSide3,
@@ -581,6 +610,33 @@ const allTiles = {
     roadJunctionLarge0, roadJunctionSmall0, roadJunctionSmall1, roadJunctionSmall2, roadJunctionSmall3
 }
 
-export {
-    allTiles
+export{
+    allTiles,
+    castleCenterEntry,
+    castleCenterSide,
+    castleCenterSides,
+    castleEdge,
+    castleEdgeRoad,
+    castleMini,
+    castleSidesEdge,
+    castleSidesEdgeRoad,
+    castleSides,
+    castleSidesRoad,
+    castleTube,
+    castleTubeEntry,
+    castleTubeEntries,
+    castleWall,
+    castleWallCurveLeft,
+    castleWallCurveRight,
+    castleWallEntry,
+    castleWallEntryLeft,
+    castleWallEntryRight,
+    castleWallJunction,
+    castleWallRoad,
+    monasteryRoad,
+    road,
+    roadCrossSmall,
+    roadCurve,
+    roadEnd,
+    roadJunctionSmall
 }
