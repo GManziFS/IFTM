@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analisar texto</title>
+</head>
+
+<body>
+    <main>
+        <p><b>1) Texto informado pelo usuario na página anterior</b></p>
+        <p id="pgAnterior"></p>
+
+        <p><b>2) Você gostaria de analisar a informação disponibilizada pelo usuario na pagina anterior?</b></p>
+        <select id="opcQualquer">
+            <option value="sim">Sim</option>
+            <option value="nao">Não</option>
+        </select>
+
+        <p>OBS: se você responder "não" na pergunta anterior (2), por favor informe umnovo texto na caixa abaixo:</p>
+        <form>
+            <input type="text" id="txtQualquerNovo">
+        </form>
+        <button id="btnQualquerNovo">Analisar</button>
+
+        <hr>
+
+        <p><b>3) Quantidade de palavras contidas no texto: </b></p>
+
+        <p><b>4) Palavras iniciadas com a letra M: </b></p>
+        <textarea id="letraM"></textarea>
+
+        <p><b>5) Primeira palavra do texto: </b></p>
+        <textarea id="primeiraPalavra"></textarea>
+
+        <p><b>6) Segunda palavra do texto: </b></p>
+        <textarea id="segundaPalavra"></textarea>
+
+        <p><b>7) Ultima palavra do texto: </b></p>
+        <textarea id="ultimaPalavra"></textarea>
+
+        <button id="papaiNoel">Abrir a pagina do papai noel</button>
+    </main> 
+    
+    <script src="js/ScriptPgAnalisar.js"></script>
+</body>
+
+</html>
