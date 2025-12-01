@@ -5,38 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/login.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">  
-    <title>Login</title>
+    <title>Cadastrar</title>
 </head>
 <body>
     <div class="container">
         <img src="img/Carcassonne_Logo.png" alt="Logo jogo Carcassone" class="justifyCenter nomeJogo float">
         <div class="card">
-            <h1>Login</h1>
+            <h1>Cadastro</h1>
 
             <div class="labelFloat">
                 <input type="text" id="user" placeholder=" " required>
-                <label for="user" id="userLabel">Usuario</label>
+                <label id="labelUser" for="user">Usuario</label>
             </div>
 
             <div class="labelFloat">
                 <input type="password" id="senha" placeholder=" " required>
-                <label for="senha" id="senhaLabel">Senha</label>
+                <label id="labelSenha" for="senha">Senha</label>
                 <i id="verSenha" class="fa fa-eye" aria-hidden="true"></i>
+            </div>
+
+            <div class="labelFloat">
+                <input type="password" id="confirmaSenha" placeholder=" " required>
+                <label id="labelConfirma" for="confirmaSenha">Confirmar Senha</label>
+                <i id="verConfirmaSenha" class="fa fa-eye" aria-hidden="true"></i>
             </div>
 
             <div class="justifyCenter containerBtn">
                 <label id="labelErro"></label>
-                <button id="btnEntrar">Entrar</button>
+                <button id="btnCadastrar">Cadastrar</button>
             </div>
 
             <div class="justifyCenter"><hr></div>
 
             <p>
-                <a href="cadastro.html">Cadastro</a>
+                <a href="login.html">Login</a>
             </p>
         </div>
     </div>
-
-    <script src="js/login.js"></script>
+    <script src="js/cadastro.js"></script>
 </body>
 </html>

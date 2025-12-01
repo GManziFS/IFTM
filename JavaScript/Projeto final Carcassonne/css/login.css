@@ -35,7 +35,9 @@ body{
     border-radius: 5px;
     justify-content: center;
     align-items: center;
-    padding: 30px;
+    width: 90%;
+    max-width: 450px;
+    padding: 50px;
     box-shadow: 0px 5px 8px rgba(255, 255, 255, 0.4),   /* sombra embaixo */
                 -5px 0px 8px rgba(255, 255, 255, 0.3),   /* sombra à esquerda */
                 5px 0px 8px rgba(255, 255, 255, 0.3);   /* sombra à direita */
@@ -50,7 +52,7 @@ h1{
 }
 
 .labelFloat input{
-    width: 100%;    
+    width: 350px;    
     padding: 5px 5px;
     display: inline-block;
     border: 0;
@@ -59,7 +61,7 @@ h1{
     outline: none;
     font-size: 16px;
     transition: all .3s ease-out;
-    border-radius: 0;
+    border-radius: 4px;
 }
 
 .labelFloat{
@@ -74,6 +76,8 @@ h1{
 }
 
 .labelFloat label{
+    display: flex;
+    align-items: center;
     color: rgba(0, 0, 0, 0.425);
     pointer-events: none;
     position: absolute;
@@ -83,8 +87,80 @@ h1{
     transition: all .3s ease-out;
 }
 
-.labelFloat input:focus + label{
+.labelFloat input:focus + label,
+.labelFloat input:valid + label{
     font-size: 13px;
-    margin-top: -5%;
+    margin-left: -2%;
+    margin-top: -4%;
     color:rgb(255, 255, 255);
+}
+
+button{
+    background-color: rgba(0, 0, 0, 0.342);
+    border-color: black;
+    color: white;
+    padding: 7px;
+    font-weight: bold;
+    font-size: 12pt;
+    margin-top: 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    outline: none;
+    transition: all .4s ease-out;
+}
+
+button:hover{
+    background-color: black;
+}
+
+.justifyCenter{
+    display: flex;
+    justify-content: center;
+}
+
+hr{
+    margin-top: 10%;
+    margin-bottom: 10%;
+    width: 200px;
+}
+
+p{
+    font-size: 14pt;
+    text-align: center;
+}
+
+.fa-eye{
+    position: absolute;
+    top: 20px;
+    right: 10px;
+    cursor: pointer;
+    color: black;
+}
+
+.float {
+    animation: flutuar 4s ease-in-out infinite;
+}
+
+@keyframes flutuar {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+    100% { transform: translateY(0); }
+}
+
+#labelErro{
+    display: block;
+    font-size: 10pt; 
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.301);
+    color: red;
+    border-radius: 5px;
+    padding: 1px;
+}
+
+.containerBtn{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
