@@ -48,7 +48,7 @@ window.addEventListener("DOMContentLoaded", function(){
         })
 
         if(user.value == userValid.user && senha.value == userValid.senha && user.value != '' && senha.value != ''){
-            window.location.href = "index.html"
+            window.location.href = "jogo.html"
         }else{
             userLabel.setAttribute("style", "color: red")
             user.setAttribute("style", "border-color: red")
