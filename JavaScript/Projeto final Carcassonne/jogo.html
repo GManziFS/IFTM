@@ -18,13 +18,29 @@
     <main>
         <div id="playerModal" class="modal">
             <div class="modal-content">
-                <h2>Escolha o número de jogadores</h2>
+                <h2 id="labelJogadores">Escolha o número de jogadores</h2>
 
-                <div class="buttons">
+                <div id="buttonsPlayers" class="buttons">
                     <button class="player-btn" data-value="2">2 Jogadores</button>
                     <button class="player-btn" data-value="3">3 Jogadores</button>
                     <button class="player-btn" data-value="4">4 Jogadores</button>
                 </div>
+
+                <div id="nameInputs" style="display:none;"></div>
+            </div>
+        </div>
+
+        <div id="areaCompra">
+            <div id="monte">
+                <img src="img/tiles/Null0.png" alt="" id="cardVirado" >
+            </div>
+
+            <div id="peça"></div>
+
+            <div>
+                <button id="btnRodar">
+                    <img src="img/rodar.png" alt="" class="btnRodar">
+                </button>
             </div>
         </div>
 
@@ -35,6 +51,7 @@
 
     </main>
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="js/jogo.js" type="module"></script>
 </body>
 
