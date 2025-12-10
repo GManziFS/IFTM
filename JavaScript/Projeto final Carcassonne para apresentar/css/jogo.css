@@ -1,0 +1,260 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: rgb(29, 11, 44);
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.55);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(3px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .3s;
+    z-index: 2000;
+}
+
+.modal.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-content {
+    background: #1e1e1e;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5px;
+    border-radius: 12px;
+    text-align: center;
+    color: white;
+    width: 300px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.4);
+}
+
+.buttons button {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    padding: 10px 20px;
+    background: #4b8bf4;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.buttons button:hover {
+    background: #1b6bf2;
+}
+
+.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#contPlacar {
+    position: fixed;
+    display: none;
+    align-items: center;
+    top: 0;        
+    width: 70%; 
+    background-color: rgb(61, 61, 61);
+    justify-content: space-around;
+    color: white;
+    border-radius: 10px;
+    padding: 10px;
+    z-index: 1000;
+}
+
+.player{
+    padding: 5px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    color: black;
+}
+
+.player.turno-atual {
+    background-color: #6675ff; /* destaque amarelo */
+    font-weight: bold;
+    border: none;
+    color: black;
+}
+
+.player img{
+    width: 40px;
+    transform: translateY(13px) translateX(-2px);
+}
+
+#tabuleiro {
+    display: none;
+    grid-template-columns: repeat(50, 100px);
+    grid-template-rows: repeat(50, 100px);
+}
+
+.celula {
+    width: 100%;
+    height: 100%;
+    border: 1px solid rgba(0,0,0,0.2);
+    background-color: #eee;
+    position: relative;
+    cursor: pointer;
+    background-color: rgba(143, 255, 143, 0.623);
+}
+
+.celula:hover{
+    background-color: rgb(165, 165, 165);
+}
+
+.peca {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+}
+
+.tile {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    object-fit: cover; 
+    transition: all 0.3s ease-in-out;
+    
+}
+
+.inputNome{
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+}
+
+.btnConfirmar{
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #1b6bf2;
+    color: rgb(255, 255, 255);
+}
+
+#labelJogadores{
+    margin: 5px;
+}
+
+#areaCompra{
+    position: fixed;
+    display: none;
+    flex-direction: column;
+    z-index: 1000;
+    background-color: #1e1e1e;
+    align-items: center;
+    justify-content: center;
+    top: 5%;
+    right: 0;        
+    height: 90%; 
+    color: white;
+    border-radius: 10px 0px 0px 10px;
+    padding: 10px;
+    justify-content: space-evenly;
+}
+
+.cartaDesvirada{
+    width: 150px;
+}
+
+#cardVirado{
+    width: 150px;
+    cursor: pointer;
+}
+
+.btnRodar{
+    width: 25px;
+    cursor: pointer;
+}
+
+#btnRodar{
+    background-color: transparent;
+    border: none;
+    display: none;
+}
+
+.regiao-clique {
+    z-index: 10;
+}
+
+.meeple {
+    z-index: 20;
+}
+
+#btnPular{
+    display: none;
+    background-color: #1b6bf2;
+    border: none;
+    padding: 10px;
+    color: white;
+}
+
+#tempoDisplay {
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    color: white;
+    background-color: rgba(61, 61, 61, 0.8);
+    padding: 5px 10px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+#timer {
+    width: 150px;
+    height: 15px;
+    -webkit-appearance: none;
+    appearance: none;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.2);
+    overflow: hidden;
+}
+
+#timer::-webkit-progress-bar {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+}
+
+#timer::-webkit-progress-value {
+    background-color: #4b8bf4;
+    border-radius: 8px;
+    transition: width 0.3s ease-in-out;
+}
+
+#timer::-moz-progress-bar {
+    background-color: #4b8bf4;
+    border-radius: 8px;
+    transition: width 0.3s ease-in-out;
+}
+
+#areaTimer {
+    position: fixed;
+    top: 1%;
+    left: 7%;
+    transform: translateX(-50%);
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1000;
+}

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/jogo.css">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <title>Carcassone</title>
+</head>
+
+<body>
+    <header>
+        <div class="center">
+            <div id="contPlacar"></div>
+        </div>
+    </header>
+
+    <main>
+        <div id="difficultyModal" class="modal">
+            <div class="modal-content">
+                <h3>Escolha o nível de dificuldade</h3>
+                <div class="buttons center">
+                    <button data-value="facil">Fácil</button>
+                    <button data-value="medio">Médio</button>
+                    <button data-value="dificil">Difícil</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="areaTimer">
+            <div id="tempoDisplay">00:00</div>
+            <progress id="timer" value="0" max="100"></progress>
+        </div>
+
+
+        <div id="playerModal" class="modal">
+            <div class="modal-content">
+                <h2 id="labelJogadores">Escolha o número de jogadores</h2>
+
+                <div id="buttonsPlayers" class="buttons">
+                    <button class="player-btn" data-value="2">2 Jogadores</button>
+                    <button class="player-btn" data-value="3">3 Jogadores</button>
+                    <button class="player-btn" data-value="4">4 Jogadores</button>
+                </div>
+
+                <div id="nameInputs" style="display:none;"></div>
+            </div>
+        </div>
+
+        <div id="areaCompra">
+            <div id="monte">
+                <img src="img/tiles/Null0.png" alt="" id="cardVirado">
+            </div>
+
+            <div id="peça"></div>
+
+            <div>
+                <button id="btnRodar">
+                    <img src="img/rodar.png" alt="" class="btnRodar">
+                </button>
+            </div>
+            <button id="btnPular">Pular</button>
+        </div>
+
+        <div id="container">
+            <div id="tabuleiro"></div>
+        </div>
+
+
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/jogo.js" type="module"></script>
+</body>
+
+</html>

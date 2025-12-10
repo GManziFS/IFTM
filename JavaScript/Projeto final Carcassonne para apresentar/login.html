@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">  
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <title>Login</title>
+</head>
+<body>
+    <div class="container">
+        <img src="img/Carcassonne_Logo.png" alt="Logo jogo Carcassone" class="justifyCenter nomeJogo float">
+        <div class="card">
+            <h1>Login</h1>
+
+            <div class="labelFloat">
+                <input type="text" id="user" placeholder=" " required>
+                <label for="user" id="userLabel">Usuario</label>
+            </div>
+
+            <div class="labelFloat">
+                <input type="password" id="senha" placeholder=" " required>
+                <label for="senha" id="senhaLabel">Senha</label>
+                <i id="verSenha" class="fa fa-eye" aria-hidden="true"></i>
+            </div>
+
+            <div class="justifyCenter containerBtn">
+                <label id="labelErro"></label>
+                <button id="btnEntrar">Entrar</button>
+            </div>
+
+            <div class="justifyCenter"><hr></div>
+
+            <p>
+                <a href="cadastro.html">Cadastro</a>
+            </p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/login.js"></script>
+</body>
+</html>
