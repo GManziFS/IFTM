@@ -1,6 +1,6 @@
 import { allTiles, 
     castleCenterEntry, castleCenterSide, castleCenterSides,
-    castleEdge, castleEdgeRoad, castleMini,
+    castleEdge, castleMini,
     castleSidesEdge, castleSidesEdgeRoad,
     castleTube, castleTubeEntry,
     castleWall, castleWallCurveLeft, castleWallCurveRight,
@@ -23,7 +23,6 @@ addCopies(castleCenterEntry[0], 3)
 addCopies(castleCenterSide[0], 4)
 addCopies(castleCenterSides[0], 2)
 addCopies(castleEdge[0], 5)
-addCopies(castleEdgeRoad[0], 5)
 addCopies(castleMini[0], 3)
 addCopies(castleSidesEdge[0], 2)
 addCopies(castleSidesEdgeRoad[0], 2)

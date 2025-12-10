@@ -97,26 +97,6 @@ const castleEdge3 = new Tile(
     {topo: 3, direita: 1, baixo: 1, esquerda: 3, centro: 3}
 )
 
-const castleEdgeRoad0 = new Tile(
-    'img/tiles/CastleEdgeRoad0.png',
-    {topo: 3, direita: 3, baixo: 2, esquerda: 2, centro: 23}
-)
-
-const castleEdgeRoad1 = new Tile(
-    'img/tiles/CastleEdgeRoad1.png',
-    {topo: 2, direita: 3, baixo: 3, esquerda: 2, centro: 23}
-)
-
-const castleEdgeRoad2 = new Tile(
-    'img/tiles/CastleEdgeRoad2.png',
-    {topo: 2, direita: 2, baixo: 3, esquerda: 3, centro: 23}
-)
-
-const castleEdgeRoad3 = new Tile(
-    'img/tiles/CastleEdgeRoad3.png',
-    {topo: 3, direita: 2, baixo: 2, esquerda: 3, centro: 23}
-)
-
 const castleMini0 = new Tile(
     'img/tiles/CastleMini0.png',
     {topo: 1, direita: 1, baixo: 2, esquerda: 1, centro: 3}
@@ -249,7 +229,7 @@ const castleTubeEntry2 = new Tile(
 
 const castleTubeEntry3 = new Tile(
     'img/tiles/CastleTubeEntry3.png',
-    {topo: 3, direita: 1, baixo: 3, esquerda: 2, centro: 3}
+    {topo: 3, direita: 2, baixo: 3, esquerda: 1, centro: 3}
 )
 
 const castleWall0 = new Tile(
@@ -299,7 +279,7 @@ const castleWallCurveRight0 = new Tile(
 
 const castleWallCurveRight1 = new Tile(
     'img/tiles/CastleWallCurveRight1.png',
-    {topo: 1, direita: 3, baixo: 2, esquerda: 1, centro: 2}
+    {topo: 1, direita: 3, baixo: 2, esquerda: 2, centro: 2}
 )
 
 const castleWallCurveRight2 = new Tile(
@@ -561,7 +541,6 @@ export const castleCenterEntry = [castleCenterEntry0, castleCenterEntry1, castle
 export const castleCenterSide = [castleCenterSide0, castleCenterSide1, castleCenterSide2, castleCenterSide3];
 export const castleCenterSides = [castleCenterSides0, castleCenterSides1, castleCenterSides2, castleCenterSides3];
 export const castleEdge = [castleEdge0, castleEdge1, castleEdge2, castleEdge3];
-export const castleEdgeRoad = [castleEdgeRoad0, castleEdgeRoad1, castleEdgeRoad2, castleEdgeRoad3];
 export const castleMini = [castleMini0, castleMini1, castleMini2, castleMini3];
 export const castleSidesEdge = [castleSidesEdge0, castleSidesEdge1, castleSidesEdge2, castleSidesEdge3];
 export const castleSidesEdgeRoad = [castleSidesEdgeRoad0, castleSidesEdgeRoad1, castleSidesEdgeRoad2, castleSidesEdgeRoad3];
@@ -590,7 +569,6 @@ export const allTiles = {
     castleCenterSide0, castleCenterSide1, castleCenterSide2, castleCenterSide3,
     castleCenterSides0, castleCenterSides1, castleCenterSides2, castleCenterSides3,
     castleEdge0, castleEdge1, castleEdge2, castleEdge3,
-    castleEdgeRoad0, castleEdgeRoad1, castleEdgeRoad2, castleEdgeRoad3,
     castleMini0, castleMini1, castleMini2, castleMini3,
     castleSides0, castleSides1,
     castleSidesEdge0, castleSidesEdge1, castleSidesEdge2, castleSidesEdge3,
@@ -632,10 +610,6 @@ export const maxRotations = {
     castleEdge1: 4,
     castleEdge2: 4,
     castleEdge3: 4,
-    castleEdgeRoad0: 4,
-    castleEdgeRoad1: 4,
-    castleEdgeRoad2: 4,
-    castleEdgeRoad3: 4,
     castleMini0: 4,
     castleMini1: 4,
     castleMini2: 4,

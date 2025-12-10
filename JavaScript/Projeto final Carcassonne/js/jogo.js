@@ -2,308 +2,402 @@ import monte from "./monte.js";
 import { allTiles, maxRotations } from "./tiles.js";
 
 document.addEventListener('DOMContentLoaded', function () {
-    let modal = document.getElementById("playerModal");
-    let botoes = document.querySelectorAll(".player-btn");
-    let labelJogadores = document.getElementById("labelJogadores")
+    const modal = document.getElementById("playerModal");
 
-    let nameInputs = document.getElementById("nameInputs");
-    let buttonsPlayers = document.getElementById("buttonsPlayers");
-    let playerNames = [];
+    const botoes = document.querySelectorAll(".player-btn");
 
-    let contPlacar = document.getElementById("contPlacar")
+    const labelJogadores = document.getElementById("labelJogadores");
+    const nameInputs = document.getElementById("nameInputs");
 
-    let linhas = 50;
-    let colunas = 50;
+    const buttonsPlayers = document.getElementById("buttonsPlayers");
+    const contPlacar = document.getElementById("contPlacar");
+
+    const tabuleiro = document.getElementById("tabuleiro");
+    const peça = document.getElementById('peça');
+
+    const cardVirado = document.getElementById('cardVirado');
+
+    const btnRodar = document.getElementById('btnRodar');
+
+    const areaCompra = document.getElementById("areaCompra")
+
+    const btnPular = document.getElementById("btnPular")
+
+    const linhas = 50;
+    const colunas = 50;
 
     let matriz = [];
-    let tabuleiro = document.getElementById("tabuleiro");
+    let cartaAtual = null;
+    let temCard = "nao";
 
-    const peça = document.getElementById('peça');
-    const cardVirado = document.getElementById('cardVirado');
-    let temCard = "nao"
+    const status = {
+        players: [],
+        turno: 0
+    };
 
-    let cartaAtual = null
+    modal.classList.add("show");
+    botoes.forEach(btn => btn.addEventListener("click", numeroPlayers));
 
-    let btnRodar = document.getElementById('btnRodar');
+    function numeroPlayers(event) {
+        const quantidade = Number(event.currentTarget.dataset.value);
 
-    // modal.classList.add("show");
+        buttonsPlayers.style.display = "none";
+        nameInputs.innerHTML = "";
+        nameInputs.style.display = "flex";
+        nameInputs.style.flexDirection = "column";
+        nameInputs.style.gap = "10px";
 
-    // botoes.forEach(function (btn) {
-    //     btn.addEventListener("click", numeroPlayers);
-    // });
+        labelJogadores.innerHTML = "Nome dos jogadores";
 
+        for (let i = 0; i < quantidade; i++) {
+            const input = document.createElement("input");
+            input.type = "text";
+            input.placeholder = `Nome do Player ${i + 1}`;
+            input.classList.add("inputNome");
+            nameInputs.appendChild(input);
+        }
 
-    // function numeroPlayers(event) {
-    //     let quantidade = Number(event.currentTarget.getAttribute("data-value"));
+        const botaoConfirmar = document.createElement("button");
+        botaoConfirmar.innerText = "Confirmar";
+        botaoConfirmar.classList.add("btnConfirmar");
+        botaoConfirmar.addEventListener("click", confirmarNomes);
+        nameInputs.appendChild(botaoConfirmar);
 
-    //     buttonsPlayers.style.display = "none";
+        function confirmarNomes() {
+            const inputs = document.querySelectorAll(".inputNome");
+            let valido = true;
+            status.players = [];
 
-    //     nameInputs.innerHTML = "";
-    //     nameInputs.style.display = "flex";
-    //     nameInputs.style.flexDirection = "column";
-    //     nameInputs.style.gap = "10px";
+            inputs.forEach((input, idx) => {
+                const nome = input.value.trim();
+                if (!nome) valido = false;
 
-    //     labelJogadores.innerHTML = "Nome dos jogadores"
-
-    //     for (let i = 0; i < quantidade; i++) {
-    //         let input = document.createElement("input");
-    //         input.type = "text";
-    //         input.placeholder = `Nome do Player ${i + 1}`;
-    //         input.classList.add("inputNome");
-    //         nameInputs.appendChild(input);
-    //     }
-
-    //     let botaoConfirmar = document.createElement("button");
-    //     botaoConfirmar.innerText = "Confirmar";
-    //     botaoConfirmar.classList.add("btnConfirmar");
-    //     botaoConfirmar.addEventListener("click", confirmarNomes);
-
-    //     nameInputs.appendChild(botaoConfirmar);
-
-    //     function confirmarNomes() {
-    //         playerNames = [];
-
-    //         let inputs = document.querySelectorAll(".inputNome");
-    //         let valido = true;
-
-    //         inputs.forEach(input => {
-    //             if (input.value.trim() === "") valido = false;
-    //             playerNames.push(input.value.trim());
-    //         });
-
-    //         if (!valido) {
-    //             alert("Preencha todos os nomes.");
-    //             return;
-    //         }
-
-    //         contPlacar.innerHTML = "";
-    //         playerNames.forEach((nome, index) => {
-    //             contPlacar.innerHTML += `<div id="player">${nome}</div>`;
-    //         });
-
-    //         modal.classList.remove("show");
-
-    //         tabuleiro.style.display = "grid";
-
-    //         setTimeout(() => {
-    //             let linha = 24;
-    //             let coluna = 24;
-
-    //             let celulaCentral = document.querySelector(`.celula[data-linha="${linha}"][data-coluna="${coluna}"]`);
-    //             if (!celulaCentral) return;
-
-    //             let rect = celulaCentral.getBoundingClientRect();
-    //             let scrollX = rect.left + window.scrollX - window.innerWidth / 2 + rect.width / 2;
-    //             let scrollY = rect.top + window.scrollY - window.innerHeight / 2 + rect.height / 2;
-
-    //             window.scrollTo({
-    //                 top: scrollY,
-    //                 left: scrollX,
-    //                 behavior: "instant"
-    //             });
-    //         }, 50);
-    //     }
-    // }
-
-
-    // tirar isso depois
-    tabuleiro.style.display = "grid";
-    setTimeout(() => {
-        let linha = 24;
-        let coluna = 24;
-
-        let celulaCentral = document.querySelector(`.celula[data-linha="${linha}"][data-coluna="${coluna}"]`);
-        if (!celulaCentral) return;
-
-        let rect = celulaCentral.getBoundingClientRect();
-        let scrollX = rect.left + window.scrollX - window.innerWidth / 2 + rect.width / 2;
-        let scrollY = rect.top + window.scrollY - window.innerHeight / 2 + rect.height / 2;
-
-        window.scrollTo({
-            top: scrollY,
-            left: scrollX,
-            behavior: "instant"
-        });
-    }, 50);
-    // tirar isso depois
-
-
-    for (let i = 0; i < linhas; i++) {
-
-        matriz[i] = [];
-
-        for (let j = 0; j < colunas; j++) {
-            matriz[i][j] = null;
-
-            let celula = document.createElement("div");
-            celula.classList.add("celula");
-
-            celula.dataset.linha = i;
-            celula.dataset.coluna = j;
-
-            if (i === 24 && j === 24) {
-                let tile = allTiles.castleWallRoad0
-                let img = document.createElement("img");
-                img.src = tile.img;
-                img.classList.add("tile")
-                celula.appendChild(img);
-                celula.dataset.nomeTile = "castleWallRoad0"
-            }
-
-            celula.addEventListener("click", (e) => {
-                let linha = parseInt(e.currentTarget.dataset.linha);
-                let coluna = parseInt(e.currentTarget.dataset.coluna);
-                let nomeTile = e.currentTarget.dataset.nomeTile;
-
-                console.log(`Linha: ${linha}, Coluna: ${coluna}, Tile: ${nomeTile}`);
-
-                if (nomeTile !== undefined) {
-                    Swal.fire({
-                        title: 'Posição inválida',
-                        text: 'Posição desejada já possui uma peça.',
-                        icon: 'error',
-                        confirmButtonText: 'Ok'
-                    });
-                    return;
-                }
-
-                if (!cartaAtual) {
-                    Swal.fire({
-                        title: 'Abra uma carta',
-                        text: 'Abra uma carta antes de posicioná-la',
-                        icon: 'error',
-                        confirmButtonText: 'Ok'
-                    });
-                    return;
-                }
-
-                let cima = document.querySelector(`.celula[data-linha="${linha - 1}"][data-coluna="${coluna}"]`);
-                let baixo = document.querySelector(`.celula[data-linha="${linha + 1}"][data-coluna="${coluna}"]`);
-                let esquerda = document.querySelector(`.celula[data-linha="${linha}"][data-coluna="${coluna - 1}"]`);
-                let direita = document.querySelector(`.celula[data-linha="${linha}"][data-coluna="${coluna + 1}"]`);
-
-                let tileCima = (cima && cima.dataset.nomeTile) ? allTiles[cima.dataset.nomeTile] : null;
-                let tileBaixo = (baixo && baixo.dataset.nomeTile) ? allTiles[baixo.dataset.nomeTile] : null;
-                let tileEsquerda = (esquerda && esquerda.dataset.nomeTile) ? allTiles[esquerda.dataset.nomeTile] : null;
-                let tileDireita = (direita && direita.dataset.nomeTile) ? allTiles[direita.dataset.nomeTile] : null;
-
-                if (!tileCima && !tileBaixo && !tileEsquerda && !tileDireita) {
-                    Swal.fire({
-                        title: 'Posição inválida',
-                        text: 'A peça deve estar adjacente a outra.',
-                        icon: 'error',
-                        confirmButtonText: 'Ok'
-                    });
-                    return;
-                }
-
-                let encaixa = true;
-
-                if (tileCima && cartaAtual && tileCima.conteudo.baixo !== cartaAtual.conteudo.topo) encaixa = false;
-                if (tileBaixo && cartaAtual && tileBaixo.conteudo.topo !== cartaAtual.conteudo.baixo) encaixa = false;
-                if (tileEsquerda && cartaAtual && tileEsquerda.conteudo.direita !== cartaAtual.conteudo.esquerda) encaixa = false;
-                if (tileDireita && cartaAtual && tileDireita.conteudo.esquerda !== cartaAtual.conteudo.direita) encaixa = false;
-
-                if (!encaixa) {
-                    Swal.fire({
-                        title: 'Peça incompatível',
-                        text: 'Essa peça não encaixa com as demais adjacentes',
-                        icon: 'error',
-                        confirmButtonText: 'Ok'
-                    });
-                    return;
-                }
-
-                if (cartaAtual && cartaAtual.img) {
-                    let img = document.createElement("img");
-                    img.src = cartaAtual.img;
-                    img.classList.add("tile");
-                    celula.appendChild(img);
-                    celula.dataset.nomeTile = cartaAtual.id;
-                    matriz[linha][coluna] = cartaAtual;
-                    cartaAtual = null;
-                    temCard = "nao";
-                    peça.innerHTML = "";
-                    btnRodar.style.display = "none";
-                }
+                status.players.push({
+                    id: idx,
+                    nome,
+                    pontuacao: 0,
+                    meeples: 7
+                });
             });
 
-
-            tabuleiro.appendChild(celula);
-        }
-    }
-
-    cardVirado.addEventListener('click', function () {
-        if (temCard === "nao") {
-            peça.innerHTML = "";
-            const img = document.createElement('img');
-            const carta = monte.shift();
-
-            if (!carta || !carta.img || !carta.id) {
+            if (!valido) {
                 Swal.fire({
-                    title: 'Acabou!',
-                    text: 'As cartas acabaram, acabe sua ação para o resultado final',
+                    title: 'Campos incompletos',
+                    text: 'Preencha todos os nomes antes de continuar.',
                     icon: 'error',
                     confirmButtonText: 'Ok'
                 });
                 return;
             }
 
-            cartaAtual = carta;
-            img.src = carta.img;
-            img.classList.add("cartaDesvirada");
-            peça.appendChild(img);
-            temCard = "sim";
-            btnRodar.style.display = "flex";
+            atualizarPlacar();
+            modal.classList.remove("show");
+            tabuleiro.style.display = "grid";
+            contPlacar.style.display = "flex"
+            areaCompra.style.display = "flex"
+
+            setTimeout(() => {
+                const linha = 24;
+                const coluna = 24;
+
+                const celulaCentral = document.querySelector(`.celula[data-linha="${linha}"][data-coluna="${coluna}"]`);
+                if (!celulaCentral) return;
+
+                const rect = celulaCentral.getBoundingClientRect();
+                const scrollX = rect.left + window.scrollX - window.innerWidth / 2 + rect.width / 2;
+                const scrollY = rect.top + window.scrollY - window.innerHeight / 2 + rect.height / 2;
+
+                window.scrollTo({
+                    top: scrollY,
+                    left: scrollX,
+                    behavior: "auto"
+                });
+            }, 50);
+        }
+    }
+
+    for (let i = 0; i < linhas; i++) {
+        matriz[i] = [];
+
+        for (let j = 0; j < colunas; j++) {
+            matriz[i][j] = null;
+
+            const celula = document.createElement("div");
+            celula.classList.add("celula");
+            celula.dataset.linha = i;
+            celula.dataset.coluna = j;
+
+            // peça inicial no centro
+            if (i === 24 && j === 24) {
+                const tile = allTiles.castleWallRoad0;
+
+                const img = document.createElement("img");
+                img.src = tile.img;
+                img.classList.add("tile");
+
+                celula.appendChild(img);
+
+                matriz[i][j] = {
+                    ...tile,
+                    element: celula,
+                    regioes: gerarRegioesMeeple(tile)
+                };
+
+                celula.dataset.nomeTile = "castleWallRoad0";
+            }
+
+            celula.addEventListener("click", () => posicionarCarta(i, j));
+            tabuleiro.appendChild(celula);
+        }
+    }
+
+    function posicionarCarta(linha, coluna) {
+        const celula = matriz[linha][coluna]?.element ||
+            document.querySelector(`.celula[data-linha="${linha}"][data-coluna="${coluna}"]`);
+
+        if (!cartaAtual) {
+            Swal.fire("Abra uma carta", "Abra uma carta antes de posicioná-la", "error");
             return;
         }
 
-        if (temCard === "sim") {
-            Swal.fire({
-                title: 'Posicione primeiro',
-                text: 'Já há um card para ser posicionado, favor posicionar antes de solicitar um novo',
-                icon: 'error',
-                confirmButtonText: 'Ok'
-            });
+        if (matriz[linha][coluna]) {
+            Swal.fire("Posição inválida", "Já existe uma peça aqui", "error");
             return;
         }
+
+        const vizinhos = [
+            matriz[linha - 1]?.[coluna],
+            matriz[linha + 1]?.[coluna],
+            matriz[linha]?.[coluna - 1],
+            matriz[linha]?.[coluna + 1]
+        ];
+
+        if (!vizinhos.some(v => v)) {
+            Swal.fire("Posição inválida", "A peça deve estar adjacente a outra", "error");
+            return;
+        }
+
+        let encaixa = true;
+        const [cima, baixo, esquerda, direita] = vizinhos;
+
+        if (cima && cima.conteudo.baixo !== cartaAtual.conteudo.topo) encaixa = false;
+        if (baixo && baixo.conteudo.topo !== cartaAtual.conteudo.baixo) encaixa = false;
+        if (esquerda && esquerda.conteudo.direita !== cartaAtual.conteudo.esquerda) encaixa = false;
+        if (direita && direita.conteudo.esquerda !== cartaAtual.conteudo.direita) encaixa = false;
+
+        if (!encaixa) {
+            Swal.fire("Peça incompatível", "Não encaixa com adjacentes", "error");
+            return;
+        }
+
+        const img = document.createElement("img");
+        img.src = cartaAtual.img;
+        img.classList.add("tile");
+
+        celula.appendChild(img);
+
+        matriz[linha][coluna] = {
+            ...cartaAtual,
+            element: celula,
+            regioes: gerarRegioesMeeple(cartaAtual)
+        };
+
+        cartaAtual = null;
+        temCard = "nao";
+        peça.innerHTML = "";
+        btnRodar.style.display = "none";
+
+        habilitarCliqueMeeple(matriz[linha][coluna], linha, coluna);
+    }
+
+    cardVirado.addEventListener('click', () => {
+        if (temCard === "sim") {
+            Swal.fire("Posicione primeiro", "Já há um card para ser posicionado", "error");
+            return;
+        }
+
+        const carta = monte.shift();
+        if (!carta) {
+            Swal.fire("Acabou!", "Não há mais cartas", "error");
+            return;
+        }
+
+        cartaAtual = carta;
+
+        const img = document.createElement("img");
+        img.src = carta.img;
+        img.classList.add("cartaDesvirada");
+
+        peça.innerHTML = "";
+        peça.appendChild(img);
+
+        temCard = "sim";
+        btnRodar.style.display = "flex";
     });
 
     btnRodar.addEventListener("click", () => {
         if (!cartaAtual) return;
 
-        let id = cartaAtual.id;
+        const id = cartaAtual.id;
+        const max = maxRotations[id];
 
-        let max = maxRotations[id];
-        if (typeof max !== "number") {
-            console.warn("Max rotações não encontrado para", id);
-            return;
-        }
+        const numero = parseInt(id.match(/\d+$/)[0]);
+        const novoNumero = (numero + 1) % max;
 
-        let numeroMatch = id.match(/\d+$/);
-        if (!numeroMatch) return;
+        const novoID = id.replace(/\d+$/, novoNumero);
+        const novaCarta = allTiles[novoID];
 
-        let numero = parseInt(numeroMatch[0]);
-
-        let novoNumero = (numero + 1) % max;
-        let novoID = id.replace(/\d+$/, novoNumero);
-
-        let novaCarta = allTiles[novoID];
-        if (!novaCarta) {
-            console.warn("Carta não encontrada:", novoID);
-            return;
-        }
+        if (!novaCarta) return;
 
         cartaAtual = novaCarta;
 
-        // atualiza a imagem na tela
-        peça.innerHTML = "";
         const img = document.createElement("img");
         img.src = cartaAtual.img;
         img.classList.add("cartaDesvirada");
+
+        peça.innerHTML = "";
         peça.appendChild(img);
     });
 
+    function gerarRegioesMeeple(tile) {
+        const regioes = [];
+
+        // Estradas
+        if (tile.conteudo.topo === 2) regioes.push({ id: "estrada-topo", tipo: "estrada", x: 50, y: 10 });
+        if (tile.conteudo.direita === 2) regioes.push({ id: "estrada-direita", tipo: "estrada", x: 90, y: 50 });
+        if (tile.conteudo.baixo === 2) regioes.push({ id: "estrada-baixo", tipo: "estrada", x: 50, y: 90 });
+        if (tile.conteudo.esquerda === 2) regioes.push({ id: "estrada-esquerda", tipo: "estrada", x: 10, y: 50 });
+
+        // Cidades nas bordas
+        if (tile.conteudo.topo === 3) regioes.push({ id: "cidade-topo", tipo: "cidade", x: 50, y: 10 });
+        if (tile.conteudo.direita === 3) regioes.push({ id: "cidade-direita", tipo: "cidade", x: 90, y: 50 });
+        if (tile.conteudo.baixo === 3) regioes.push({ id: "cidade-baixo", tipo: "cidade", x: 50, y: 90 });
+        if (tile.conteudo.esquerda === 3) regioes.push({ id: "cidade-esquerda", tipo: "cidade", x: 10, y: 50 });
+
+        // Cidade central
+        if (tile.conteudo.centro === 3)
+            regioes.push({ id: "cidade-centro", tipo: "cidade", x: 50, y: 50 });
+
+        // Mosteiro
+        if (tile.conteudo.centro === 4)
+            regioes.push({ id: "mosteiro-centro", tipo: "mosteiro", x: 50, y: 50 });
+
+        return regioes;
+    }
+
+    function habilitarCliqueMeeple(tile, linha, coluna) {
+        tile.regioes.forEach(r => {
+            if (r.meeple || regiaoOcupada(tile, r.tipo, r.id)) return;
+
+            const div = document.createElement("div");
+            div.classList.add("regiao-clique");
+
+            div.style.position = "absolute";
+            div.style.width = "30%";
+            div.style.height = "30%";
+            div.style.left = `${r.x - 15}%`;
+            div.style.top = `${r.y - 15}%`;
+            div.style.cursor = "pointer";
+            div.style.backgroundColor = "rgba(97, 97, 97, 0.51)";
+
+            btnPular.style.display = "flex"
+
+            tile.element.appendChild(div);
+
+            div.addEventListener("click", e => {
+                e.stopPropagation();
+
+                const playerAtual = status.players[status.turno];
+
+                if (r.meeple) {
+                    Swal.fire("Região ocupada", "Não é possível colocar meeple aqui", "error");
+                    return;
+                }
+
+                if (playerAtual.meeples <= 0) {
+                    Swal.fire("Sem meeples", "Você não tem meeples disponíveis", "error");
+                    return;
+                }
+
+                r.meeple = { player: playerAtual.id};
+                desenharMeeple(tile, r.x, r.y, playerAtual.id);
+
+                div.remove();
+                playerAtual.meeples--;
+
+                btnPular.style.display = "none"
+                proximoTurno();
+                removerTodosDivsClique();
+            });
+        });
+    }
+
+    btnPular.addEventListener("click", function(){
+        proximoTurno();
+        removerTodosDivsClique();
+        btnPular.style.display = "none"
+    })
+
+    function desenharMeeple(tile, x, y, playerIndex) {
+        const meepleEl = document.createElement("img");
+
+        meepleEl.src = `img/meeple${playerIndex}.png`;
+        meepleEl.classList.add("meeple");
+        meepleEl.style.position = "absolute";
+
+        meepleEl.style.left = x + "px";
+        meepleEl.style.top = y + "px";
+
+        tile.element.appendChild(meepleEl);
+    }
 
 
+    function atualizarPlacar() {
+        contPlacar.innerHTML = "";
+
+        status.players.forEach((p, idx) => {
+            const div = document.createElement("div");
+            div.classList.add("player");
+
+            if (idx === status.turno) div.classList.add("turno-atual");
+
+            div.innerHTML = `${p.nome}: ${p.pontuacao}<br>Meeples:<img src="img/meeple${idx}.png">${p.meeples}`;
+            contPlacar.appendChild(div);
+        });
+    }
+
+    function proximoTurno() {
+        status.turno = (status.turno + 1) % status.players.length;
+        console.log("Turno do jogador:", status.players[status.turno].nome);
+        atualizarPlacar();
+    }
+
+    function removerTodosDivsClique() {
+        const divs = document.querySelectorAll(".regiao-clique");
+        divs.forEach(d => d.remove());
+    }
+
+    function regiaoOcupada(tile, regiaoTipo, regiaoId) {
+        const regiaoAtual = tile.regioes.find(r => r.id === regiaoId);
+        if (!regiaoAtual) return false;
+
+        for (let i = 0; i < linhas; i++) {
+            for (let j = 0; j < colunas; j++) {
+                const t = matriz[i][j];
+                if (!t) continue;
+
+                for (const r of t.regioes) {
+                    if (r.tipo !== regiaoTipo) continue;
+                    if (!r.meeple) continue;
+
+                    const ladoAtual = regiaoId.split("-")[1];
+                    const ladoOutro = r.id.split("-")[1];
+
+                    if (ladoAtual === ladoOutro) return true;
+                }
+            }
+        }
+
+        return false;
+    }
 });

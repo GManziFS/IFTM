@@ -67,7 +67,7 @@ body{
 
 #contPlacar {
     position: fixed;
-    display: flex;
+    display: none;
     align-items: center;
     top: 0;        
     width: 70%; 
@@ -76,18 +76,33 @@ body{
     color: white;
     border-radius: 10px;
     padding: 10px;
-    z-index: 1000; 
+    z-index: 1000;
 }
 
-#player{
-    padding: 10px;
+.player{
+    padding: 5px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    color: black;
+}
+
+.player.turno-atual {
+    background-color: #6675ff; /* destaque amarelo */
+    font-weight: bold;
+    border: none;
+    color: black;
+}
+
+.player img{
+    width: 40px;
+    transform: translateY(13px) translateX(-2px);
 }
 
 #tabuleiro {
     display: none;
     grid-template-columns: repeat(50, 100px);
     grid-template-rows: repeat(50, 100px);
-
 }
 
 .celula {
@@ -97,6 +112,7 @@ body{
     background-color: #eee;
     position: relative;
     cursor: pointer;
+    background-color: rgba(143, 255, 143, 0.623);
 }
 
 .celula:hover{
@@ -118,11 +134,7 @@ body{
     left: 0;
     object-fit: cover; 
     transition: all 0.3s ease-in-out;
-}
-
-.tile:hover{
-    transform: scale(1.5);
-    z-index: 2;
+    
 }
 
 .inputNome{
@@ -146,7 +158,7 @@ body{
 
 #areaCompra{
     position: fixed;
-    display: flex;
+    display: none;
     flex-direction: column;
     z-index: 1000;
     background-color: #1e1e1e;
@@ -179,4 +191,20 @@ body{
     background-color: transparent;
     border: none;
     display: none;
+}
+
+.regiao-clique {
+    z-index: 10;
+}
+
+.meeple {
+    z-index: 20;
+}
+
+#btnPular{
+    display: none;
+    background-color: #1b6bf2;
+    border: none;
+    padding: 10px;
+    color: white;
 }
