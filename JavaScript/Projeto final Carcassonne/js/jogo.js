@@ -30,6 +30,17 @@ document.addEventListener('DOMContentLoaded', function () {
     let cartaAtual = null;
     let temCard = "nao";
 
+    let totalSegundos = 0;
+    let segundosRestantes = 0;
+    let intervalId = null;
+
+    let tempoDisplay = document.getElementById("tempoDisplay");
+    let timer = document.getElementById("timer");
+    let areaTimer = document.getElementById("areaTimer")
+
+    const difficultyModal = document.getElementById("difficultyModal");
+    const difficultyButtons = difficultyModal.querySelectorAll("button");
+
     const status = {
         players: [],
         turno: 0
@@ -90,11 +101,15 @@ document.addEventListener('DOMContentLoaded', function () {
                 return;
             }
 
-            atualizarPlacar();
             modal.classList.remove("show");
+
+            difficultyModal.classList.add("show");
+
+            atualizarPlacar();
             tabuleiro.style.display = "grid";
             contPlacar.style.display = "flex"
             areaCompra.style.display = "flex"
+            areaTimer.style.display = "flex"
 
             setTimeout(() => {
                 const linha = 24;
@@ -150,6 +165,51 @@ document.addEventListener('DOMContentLoaded', function () {
             tabuleiro.appendChild(celula);
         }
     }
+
+    difficultyButtons.forEach(btn => {
+        btn.addEventListener("click", () => {
+            setDificuldade(btn.dataset.value);
+            difficultyModal.classList.remove("show");
+            iniciarTurno(); // Começa o primeiro turno após escolher dificuldade
+        });
+    });
+
+    function setDificuldade(nivel) {
+        switch (nivel) {
+            case "facil": totalSegundos = 60; break;
+            case "medio": totalSegundos = 35; break;
+            case "dificil": totalSegundos = 20; break;
+        }
+        resetTimer();
+    }
+
+    function resetTimer() {
+        segundosRestantes = totalSegundos;
+        atualizarDisplayTimer();
+        if (intervalId) clearInterval(intervalId);
+        intervalId = setInterval(() => {
+            segundosRestantes--;
+            atualizarDisplayTimer();
+            if (segundosRestantes <= 0) {
+                clearInterval(intervalId);
+                Swal.fire("Tempo!", `Tempo do jogador ${status.players[status.turno].nome} acabou!`, "error");
+                proximoTurno();
+                resetTimer();
+            }
+        }, 1000);
+    }
+
+    function atualizarDisplayTimer() {
+        const min = Math.floor(segundosRestantes / 60);
+        const seg = segundosRestantes % 60;
+        tempoDisplay.textContent = `${String(min).padStart(2, '0')}:${String(seg).padStart(2, '0')}`;
+        timer.value = ((totalSegundos - segundosRestantes) / totalSegundos) * 100;
+    }
+
+    function iniciarTurno() {
+        resetTimer();
+    }
+
 
     function posicionarCarta(linha, coluna) {
         const celula = matriz[linha][coluna]?.element ||
@@ -207,6 +267,7 @@ document.addEventListener('DOMContentLoaded', function () {
         peça.innerHTML = "";
         btnRodar.style.display = "none";
 
+        iniciarTurno(); // reinicia o timer
         habilitarCliqueMeeple(matriz[linha][coluna], linha, coluna);
     }
 
@@ -219,6 +280,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const carta = monte.shift();
         if (!carta) {
             Swal.fire("Acabou!", "Não há mais cartas", "error");
+            pontuarFinalJogo()
             return;
         }
 
@@ -258,6 +320,7 @@ document.addEventListener('DOMContentLoaded', function () {
         peça.innerHTML = "";
         peça.appendChild(img);
     });
+
 
     function gerarRegioesMeeple(tile) {
         const regioes = [];
@@ -319,22 +382,30 @@ document.addEventListener('DOMContentLoaded', function () {
                     return;
                 }
 
-                r.meeple = { player: playerAtual.id};
+                r.meeple = { player: playerAtual.id };
                 desenharMeeple(tile, r.x, r.y, playerAtual.id);
 
                 div.remove();
                 playerAtual.meeples--;
 
                 btnPular.style.display = "none"
+                if (r.tipo === "estrada")
+                    pontuarEstrada(linha, coluna, playerAtual.id);
+                if (r.tipo === "cidade")
+                    pontuarCastelo(linha, coluna, playerAtual.id, false);
+                if (r.tipo === "mosteiro")
+                    pontuarMosteiro(linha, coluna, playerAtual.id);
+
                 proximoTurno();
                 removerTodosDivsClique();
             });
         });
     }
 
-    btnPular.addEventListener("click", function(){
+    btnPular.addEventListener("click", function () {
         proximoTurno();
         removerTodosDivsClique();
+        iniciarTurno();
         btnPular.style.display = "none"
     })
 
@@ -345,8 +416,8 @@ document.addEventListener('DOMContentLoaded', function () {
         meepleEl.classList.add("meeple");
         meepleEl.style.position = "absolute";
 
-        meepleEl.style.left = x + "px";
-        meepleEl.style.top = y + "px";
+        meepleEl.style.left = x + "%";
+        meepleEl.style.top = y + "%";
 
         tile.element.appendChild(meepleEl);
     }
@@ -399,5 +470,206 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         return false;
+    }
+
+    function pontuarEstrada(linha, coluna) {
+        const visitados = new Set();
+        const stack = [[linha, coluna]];
+        const estradaTiles = [];
+        const jogadoresMeeples = new Map();
+
+        while (stack.length) {
+            const [i, j] = stack.pop();
+            const key = `${i},${j}`;
+            if (visitados.has(key)) continue;
+            visitados.add(key);
+
+            const t = matriz[i]?.[j];
+            if (!t) continue;
+            if (t.concluidaEstrada) continue;
+
+            const conectaEstrada = t.regioes.some(r => r.tipo === "estrada");
+            if (!conectaEstrada) continue;
+
+            estradaTiles.push(t);
+
+            t.regioes.forEach(r => {
+                if (r.tipo !== "estrada" || !r.meeple) return;
+                if (!jogadoresMeeples.has(r.meeple.player)) jogadoresMeeples.set(r.meeple.player, 0);
+                jogadoresMeeples.set(r.meeple.player, jogadoresMeeples.get(r.meeple.player) + 1);
+            });
+
+            const vizinhos = [
+                [i - 1, j, 'topo', 'baixo'],
+                [i + 1, j, 'baixo', 'topo'],
+                [i, j - 1, 'esquerda', 'direita'],
+                [i, j + 1, 'direita', 'esquerda']
+            ];
+
+            vizinhos.forEach(([x, y, ladoAtual, ladoVizinho]) => {
+                const v = matriz[x]?.[y];
+                if (!v) return;
+                const liga = t.conteudo[ladoAtual] === 2 && v.conteudo[ladoVizinho] === 2;
+                if (liga) stack.push([x, y]);
+            });
+        }
+
+        if (!estradaTiles.length) return;
+
+        // Estrada completa se todos os lados abertos têm vizinhos com estrada
+        let completa = estradaTiles.every(t => {
+            const i = Number(t.element.dataset.linha);
+            const j = Number(t.element.dataset.coluna);
+            return ['topo', 'baixo', 'esquerda', 'direita'].every(lado => {
+                if (t.conteudo[lado] !== 2) return true;
+                let vizinho;
+                if (lado === 'topo') vizinho = matriz[i - 1]?.[j];
+                if (lado === 'baixo') vizinho = matriz[i + 1]?.[j];
+                if (lado === 'esquerda') vizinho = matriz[i]?.[j - 1];
+                if (lado === 'direita') vizinho = matriz[i]?.[j + 1];
+                return vizinho && vizinho.conteudo[{ 'topo': 'baixo', 'baixo': 'topo', 'esquerda': 'direita', 'direita': 'esquerda' }[lado]] === 2;
+            });
+        });
+
+        if (completa) {
+            const pontos = estradaTiles.length;
+            const maxMeeples = Math.max(...Array.from(jogadoresMeeples.values()));
+            jogadoresMeeples.forEach((count, playerId) => {
+                if (count === maxMeeples) status.players[playerId].pontuacao += pontos;
+            });
+            estradaTiles.forEach(t => t.concluidaEstrada = true);
+            atualizarPlacar();
+        }
+    }
+
+    function pontuarCastelo(linha, coluna, fimJogo = false) {
+        const visitados = new Set();
+        const stack = [[linha, coluna]];
+        const tilesCastelo = [];
+        const jogadoresMeeples = new Map();
+
+        while (stack.length) {
+            const [i, j] = stack.pop();
+            const key = `${i},${j}`;
+            if (visitados.has(key)) continue;
+            visitados.add(key);
+
+            const t = matriz[i]?.[j];
+            if (!t) continue;
+            if (t.concluidaCidade) continue;
+
+            const temCidade = t.regioes.some(r => r.tipo === "cidade" && r.meeple);
+            const conectaCidade = t.regioes.some(r => r.tipo === "cidade");
+            if (!conectaCidade) continue;
+
+            tilesCastelo.push(t);
+
+            t.regioes.forEach(r => {
+                if (r.tipo !== "cidade" || !r.meeple) return;
+                if (!jogadoresMeeples.has(r.meeple.player)) jogadoresMeeples.set(r.meeple.player, 0);
+                jogadoresMeeples.set(r.meeple.player, jogadoresMeeples.get(r.meeple.player) + 1);
+            });
+
+            const vizinhos = [
+                [i - 1, j], [i + 1, j], [i, j - 1], [i, j + 1]
+            ];
+            vizinhos.forEach(([x, y]) => {
+                const v = matriz[x]?.[y];
+                if (!v) return;
+                if (v.regioes.some(r => r.tipo === "cidade")) stack.push([x, y]);
+            });
+        }
+
+        if (!tilesCastelo.length) return;
+
+        const fechado = tilesCastelo.every(t => {
+            const i = Number(t.element.dataset.linha);
+            const j = Number(t.element.dataset.coluna);
+            return ['topo', 'baixo', 'esquerda', 'direita'].every(lado => {
+                if (t.conteudo[lado] !== 3) return true;
+                let vizinho;
+                if (lado === 'topo') vizinho = matriz[i - 1]?.[j];
+                if (lado === 'baixo') vizinho = matriz[i + 1]?.[j];
+                if (lado === 'esquerda') vizinho = matriz[i]?.[j - 1];
+                if (lado === 'direita') vizinho = matriz[i]?.[j + 1];
+                return vizinho && vizinho.conteudo[{ 'topo': 'baixo', 'baixo': 'topo', 'esquerda': 'direita', 'direita': 'esquerda' }[lado]] === 3;
+            });
+        });
+
+        let pontos = tilesCastelo.length * (fechado || fimJogo ? 2 : 0);
+        const maxMeeples = Math.max(...Array.from(jogadoresMeeples.values()));
+        jogadoresMeeples.forEach((count, playerId) => {
+            if (count === maxMeeples) status.players[playerId].pontuacao += pontos;
+        });
+
+        tilesCastelo.forEach(t => t.concluidaCidade = true);
+        atualizarPlacar();
+    }
+
+    function pontuarMosteiro(linha, coluna) {
+        const t = matriz[linha]?.[coluna];
+        if (!t || t.concluidoMosteiro) return;
+
+        const r = t.regioes.find(r => r.tipo === "mosteiro" && r.meeple);
+        if (!r) return;
+
+        let pontos = 0;
+        for (let i = linha - 1; i <= linha + 1; i++) {
+            for (let j = coluna - 1; j <= coluna + 1; j++) {
+                if (matriz[i]?.[j]) pontos++;
+            }
+        }
+
+        status.players[r.meeple.player].pontuacao += pontos;
+        t.concluidoMosteiro = true;
+        atualizarPlacar();
+    }
+
+
+    function pontuarFinalJogo() {
+        const visitadosEstrada = new Set();
+        const visitadosCastelo = new Set();
+        const visitadosMosteiro = new Set();
+
+        for (let i = 0; i < linhas; i++) {
+            for (let j = 0; j < colunas; j++) {
+                const t = matriz[i][j];
+                if (!t) continue;
+
+                // Estradas
+                t.regioes.forEach(r => {
+                    if (r.tipo === "estrada" && !visitadosEstrada.has(`${i},${j},${r.id}`)) {
+                        pontuarEstrada(i, j, r.meeple?.player, true, visitadosEstrada);
+                    }
+                });
+
+                // Castelos
+                t.regioes.forEach(r => {
+                    if (r.tipo === "cidade" && !visitadosCastelo.has(`${i},${j},${r.id}`)) {
+                        pontuarCastelo(i, j, r.meeple?.player, true, visitadosCastelo);
+                    }
+                });
+
+                // Mosteiros
+                t.regioes.forEach(r => {
+                    if (r.tipo === "mosteiro" && !visitadosMosteiro.has(`${i},${j},${r.id}`)) {
+                        pontuarMosteiro(i, j, r.meeple?.player, true, visitadosMosteiro);
+                    }
+                });
+            }
+        }
+
+        atualizarPlacar();
+
+        // Mostrar vencedor
+        const maxPontos = Math.max(...status.players.map(p => p.pontuacao));
+        const vencedor = status.players.find(p => p.pontuacao === maxPontos);
+
+        Swal.fire({
+            title: "Fim de Jogo!",
+            html: `Vencedor: ${vencedor.nome}<br>Pontos: ${vencedor.pontuacao}<br>Parabéns!`,
+            icon: "success",
+            confirmButtonText: "Ok"
+        });
     }
 });

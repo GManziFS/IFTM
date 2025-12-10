@@ -22,6 +22,7 @@ body{
     opacity: 0;
     pointer-events: none;
     transition: opacity .3s;
+    z-index: 2000;
 }
 
 .modal.show {
@@ -207,4 +208,53 @@ body{
     border: none;
     padding: 10px;
     color: white;
+}
+
+#tempoDisplay {
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    color: white;
+    background-color: rgba(61, 61, 61, 0.8);
+    padding: 5px 10px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+#timer {
+    width: 150px;
+    height: 15px;
+    -webkit-appearance: none;
+    appearance: none;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.2);
+    overflow: hidden;
+}
+
+#timer::-webkit-progress-bar {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+}
+
+#timer::-webkit-progress-value {
+    background-color: #4b8bf4;
+    border-radius: 8px;
+    transition: width 0.3s ease-in-out;
+}
+
+#timer::-moz-progress-bar {
+    background-color: #4b8bf4;
+    border-radius: 8px;
+    transition: width 0.3s ease-in-out;
+}
+
+#areaTimer {
+    position: fixed;
+    top: 1%;
+    left: 7%;
+    transform: translateX(-50%);
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1000;
 }

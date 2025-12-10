@@ -12,11 +12,28 @@
 <body>
     <header>
         <div class="center">
-                <div id="contPlacar"></div>
+            <div id="contPlacar"></div>
         </div>
     </header>
 
     <main>
+        <div id="difficultyModal" class="modal">
+            <div class="modal-content">
+                <h3>Escolha o nível de dificuldade</h3>
+                <div class="buttons center">
+                    <button data-value="facil">Fácil</button>
+                    <button data-value="medio">Médio</button>
+                    <button data-value="dificil">Difícil</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="areaTimer">
+            <div id="tempoDisplay">00:00</div>
+            <progress id="timer" value="0" max="100"></progress>
+        </div>
+
+
         <div id="playerModal" class="modal">
             <div class="modal-content">
                 <h2 id="labelJogadores">Escolha o número de jogadores</h2>

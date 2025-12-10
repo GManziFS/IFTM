@@ -55,6 +55,12 @@ window.addEventListener("DOMContentLoaded", function(){
             senhaLabel.setAttribute("style", "color: red")
             senha.setAttribute("style", "border-color: red")
             labelErro.innerHTML = 'Senha ou usuarios incorretos ou não preenchidos, favor tente novamente'
+            Swal.fire({
+                    title: 'Algo deu errado',
+                    text: 'Senha ou usuarios incorretos ou não preenchidos, favor tente novamente',
+                    icon: 'error',
+                    confirmButtonText: 'Ok'
+                });
             user.focus()
         }
     }
