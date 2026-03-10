@@ -1,0 +1,64 @@
+Análise de Testes da Classe Calculadora
+
+1. Verificação do Construtor
+
+Elemento analisado:
+Construtor padrão Calculadora()
+
+Objetivo do teste:
+Confirmar qual valor é atribuído à memória da calculadora no momento em que um novo objeto é criado.
+
+Problema identificado:
+Na versão analisada do código, o atributo de memória iniciava com o valor 1. Entretanto, o comportamento esperado para uma calculadora é que a memória comece em 0, garantindo que as operações subsequentes partam de um estado neutro.
+
+2. Avaliação do Método de Subtração
+
+Método:
+subtrair(int valor)
+
+Objetivo do teste:
+Testar se o método reduz corretamente o valor armazenado na memória ao receber um número como parâmetro.
+
+Problema identificado:
+A implementação não realizava a operação de subtração. O código apenas reaplicava o valor existente à própria variável de memória, sem modificá-lo. Como consequência, a chamada do método não produzia qualquer alteração no resultado armazenado.
+
+3. Avaliação do Método de Multiplicação
+
+Método:
+multiplicar(int valor)
+
+Objetivo do teste:
+Garantir que o valor atual da memória seja multiplicado pelo número informado.
+
+Problema identificado:
+Em vez de multiplicar, o método executava uma divisão entre os valores. Esse erro lógico fazia com que os resultados retornados fossem completamente diferentes daqueles esperados para uma operação de multiplicação.
+
+4. Avaliação do Método de Divisão
+
+Método:
+dividir(int valor)
+
+Objetivo do teste:
+Verificar se a divisão é realizada corretamente e se o método trata adequadamente situações inválidas.
+
+Problema identificado:
+A condição implementada lançava uma exceção sempre que o valor informado fosse menor ou igual a 1. Contudo, matematicamente apenas a divisão por zero deve ser considerada inválida. Dessa forma, operações válidas, como dividir por 1, acabavam sendo bloqueadas indevidamente.
+
+5. Avaliação do Método de Exponenciação
+
+Método:
+exponenciar(int valor)
+
+Objetivo do teste:
+Confirmar se a calculadora consegue elevar o valor armazenado na memória à potência especificada.
+
+Problema identificado:
+O algoritmo não utilizava corretamente o parâmetro recebido. O laço de repetição executava um número fixo de iterações, independentemente do valor informado. Além disso, o cálculo realizado multiplicava repetidamente a memória por ela mesma, o que gerava resultados inconsistentes e fora do esperado.
+
+Considerações Finais
+
+A execução de testes unitários com JUnit foi fundamental para detectar falhas na lógica da implementação da classe Calculadora.
+
+Após a identificação dos problemas, tornou-se possível corrigir cada método, garantindo que as operações matemáticas funcionem conforme o esperado.
+
+Esse tipo de abordagem baseada em testes contribui para aumentar a confiabilidade do software e auxilia na identificação rápida de erros durante o desenvolvimento.
