@@ -1,0 +1,22 @@
+[
+    {
+        "username": "wilton.filho",
+        "senha": "$2a$10$8fGkR7K1kYpQ1xXz6X9G6eQ7QfYF0R7H3dYlC5sTz8xZ2WjLk9G5K"
+    },
+    {
+        "username": "maria.jose",
+        "senha": "$2a$10$K9sD8fH3kL2mN7pQ4rT6uVxYz1A2B3C4D5E6F7G8H9I0JkLmNoPq"
+    },
+    {
+        "username": "teste1",
+        "senha": "$2a$10$AbCdEfGhIjKlMnOpQrStUvWxYz1234567890abcdefgHIJKLMN"
+    },
+    {
+        "username": "teste2",
+        "senha": "$2a$10$ZxYwVuTsRqPoNmLkJiHgFeDcBa0987654321ZYXWVUTSRQPON"
+    },
+    {
+        "username": "ana.carol",
+        "senha": "$2a$10$QwErTyUiOpAsDfGhJkLzXcVbNm1234567890qwertyUIOPASDF"
+    }
+]
