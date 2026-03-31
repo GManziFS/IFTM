@@ -1,0 +1,63 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+
+
+#container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    padding: 20px;
+}
+
+.card {
+    background-color: #111;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s;
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card img {
+    width: 100%;
+}
+
+.card h2 {
+    font-size: 16px;
+    margin: 10px;
+}
+
+.card p {
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+body{
+    background-color: black;
+    color: white;
+}
+
+header{
+    display: flex;
+    justify-content: center;
+}
+
+header h1{
+    font-family: 'Lucida Sans Unicode';
+    font-size: 60pt;
+}
+
+footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 50%;
+}
